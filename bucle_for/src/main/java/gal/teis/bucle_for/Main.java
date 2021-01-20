@@ -157,12 +157,14 @@ public class Main {
         }
 
     }
-
-    static void media() {
+    
+      static void media() {
         //Defino las varibales y aquellas que van a ser usadas dentro de los bucles ya las 
         //inicializo aquí para que que no de problemas de inicialización de variable al
         //llamarlas al final fuera de los bucles.
         int contador;
+        int contneg=0;
+        int contceros=0;
         double num = 0;
         double suma = 0;
         double media = 0;
@@ -186,16 +188,28 @@ public class Main {
                     correcto = false;
                 }
             } while (!correcto);
-            //Con cada variable introducida se irán realizando las operaciones de modo que 
+           
+           //Para contar los valores introducidos negativos. Sumarlos según los vamos acumulando y calcular su media.
+            if(num<0){
+            //Con cada variable introducida menor que cero se irán realizando las operaciones de modo que 
             //queden los cáculos acumulados para cada sigiente variable. Así las variables se irán sumando
-            //según se introducen y se iran contando hasta llegar a 10.
-            suma = suma + num;
-            //La media se calcula como la suma de las variables entre el número de variables, así cunado lleguemos al último
+            //según se introducen.
+            contneg++;
+            suma=suma+num;
+           //La media se calcula como la suma de las variables entre el número de variables, así cunado lleguemos al último
             //resultado en el bucle, tendremos la suma total de las variables introducidas entre el número total de las mismas (dado por el contador).
-            media = suma / contador;
+            media = suma / contneg;
+            //Para contar los valores introducidos igual a cero
+            }else if (num==0){
+            contceros++;
+            }
+            
+            
         }
-        //Devolvemos por pantalla el último valor del bucle ya que es el acumulado entre 10 que buscábamos.
-        System.out.println("La media de los 10 números es " + media);
+        //Devolvemos por pantalla el último valor del bucle ya que la media hecha con el es el acumulado los que buscábamos entre el número de negativos.
+        System.out.println("La media de los numeros negativos es " + media);
+        //Devolvemos por pantalla el valor final del contador de ceros.
+        System.out.println("Has introducido "+contceros+" cero(s).");
 
     }
 
